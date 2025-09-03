@@ -1,0 +1,194 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(210, 40%, 98%);
+  --foreground: hsl(210, 40%, 8%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(210, 40%, 8%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(210, 40%, 8%);
+  --primary: hsl(185, 85%, 45%);
+  --primary-foreground: hsl(0, 0%, 100%);
+  --secondary: hsl(210, 40%, 96%);
+  --secondary-foreground: hsl(210, 40%, 15%);
+  --muted: hsl(210, 40%, 96%);
+  --muted-foreground: hsl(210, 40%, 45%);
+  --accent: hsl(24, 95%, 53%);
+  --accent-foreground: hsl(0, 0%, 100%);
+  --destructive: hsl(0, 84%, 60%);
+  --destructive-foreground: hsl(0, 0%, 100%);
+  --border: hsl(210, 40%, 88%);
+  --input: hsl(210, 40%, 96%);
+  --ring: hsl(185, 85%, 45%);
+  --chart-1: hsl(185, 85%, 45%);
+  --chart-2: hsl(159, 78%, 36%);
+  --chart-3: hsl(42, 93%, 56%);
+  --chart-4: hsl(147, 78%, 42%);
+  --chart-5: hsl(341, 75%, 51%);
+  --sidebar: hsl(0, 0%, 100%);
+  --sidebar-foreground: hsl(210, 40%, 8%);
+  --sidebar-primary: hsl(185, 85%, 45%);
+  --sidebar-primary-foreground: hsl(0, 0%, 100%);
+  --sidebar-accent: hsl(210, 40%, 96%);
+  --sidebar-accent-foreground: hsl(185, 85%, 45%);
+  --sidebar-border: hsl(210, 40%, 88%);
+  --sidebar-ring: hsl(185, 85%, 45%);
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: Georgia, serif;
+  --font-mono: Menlo, monospace;
+  --radius: 12px;
+  --shadow-2xs: 0px 2px 0px 0px hsl(185, 85%, 45%, 0.00);
+  --shadow-xs: 0px 2px 0px 0px hsl(185, 85%, 45%, 0.00);
+  --shadow-sm: 0px 2px 0px 0px hsl(185, 85%, 45%, 0.00), 0px 1px 2px -1px hsl(185, 85%, 45%, 0.00);
+  --shadow: 0px 2px 0px 0px hsl(185, 85%, 45%, 0.00), 0px 1px 2px -1px hsl(185, 85%, 45%, 0.00);
+  --shadow-md: 0px 2px 0px 0px hsl(185, 85%, 45%, 0.00), 0px 2px 4px -1px hsl(185, 85%, 45%, 0.00);
+  --shadow-lg: 0px 2px 0px 0px hsl(185, 85%, 45%, 0.00), 0px 4px 6px -1px hsl(185, 85%, 45%, 0.00);
+  --shadow-xl: 0px 2px 0px 0px hsl(185, 85%, 45%, 0.00), 0px 8px 10px -1px hsl(185, 85%, 45%, 0.00);
+  --shadow-2xl: 0px 2px 0px 0px hsl(185, 85%, 45%, 0.00);
+  --tracking-normal: 0em;
+  --spacing: 0.25rem;
+}
+
+[data-theme="dark"] {
+  --background: hsl(210, 40%, 8%);
+  --foreground: hsl(210, 40%, 98%);
+  --card: hsl(210, 40%, 12%);
+  --card-foreground: hsl(210, 40%, 98%);
+  --popover: hsl(210, 40%, 12%);
+  --popover-foreground: hsl(210, 40%, 98%);
+  --primary: hsl(185, 85%, 45%);
+  --primary-foreground: hsl(0, 0%, 100%);
+  --secondary: hsl(210, 40%, 16%);
+  --secondary-foreground: hsl(210, 40%, 85%);
+  --muted: hsl(210, 40%, 16%);
+  --muted-foreground: hsl(210, 40%, 55%);
+  --accent: hsl(24, 95%, 53%);
+  --accent-foreground: hsl(0, 0%, 100%);
+  --destructive: hsl(0, 84%, 60%);
+  --destructive-foreground: hsl(0, 0%, 100%);
+  --border: hsl(210, 40%, 20%);
+  --input: hsl(210, 40%, 16%);
+  --ring: hsl(185, 85%, 45%);
+  --sidebar: hsl(210, 40%, 12%);
+  --sidebar-foreground: hsl(210, 40%, 98%);
+  --sidebar-primary: hsl(185, 85%, 45%);
+  --sidebar-primary-foreground: hsl(0, 0%, 100%);
+  --sidebar-accent: hsl(210, 40%, 16%);
+  --sidebar-accent-foreground: hsl(185, 85%, 45%);
+  --sidebar-border: hsl(210, 40%, 20%);
+  --sidebar-ring: hsl(185, 85%, 45%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+}
+
+/* Custom styles for the app */
+.streak-badge {
+  background: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--primary)));
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.overdue-task {
+  border-left: 4px solid hsl(var(--destructive));
+  background-color: hsl(var(--destructive) / 0.05);
+}
+
+.completed-task {
+  opacity: 0.6;
+}
+
+.task-priority-high {
+  border-left: 4px solid hsl(var(--destructive));
+}
+
+.task-priority-medium {
+  border-left: 4px solid hsl(24, 95%, 53%);
+}
+
+.task-priority-low {
+  border-left: 4px solid hsl(142, 71%, 45%);
+}
+
+.notification-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: hsl(var(--destructive));
+  color: white;
+  border-radius: 50%;
+  min-width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.confetti-animation {
+  animation: confetti-fall 3s linear infinite;
+}
+
+@keyframes confetti-fall {
+  0% { transform: translateY(-100vh) rotate(0deg); }
+  100% { transform: translateY(100vh) rotate(720deg); }
+}
+
+/* Simple mode styles */
+.simple-mode .task-item {
+  padding: 1.5rem;
+  font-size: 1.125rem;
+}
+
+.simple-mode button {
+  min-height: 56px;
+  font-size: 1.125rem;
+}
+
+/* Focus styles for accessibility */
+*:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --border: hsl(210, 40%, 50%);
+  }
+  
+  [data-theme="dark"] {
+    --border: hsl(210, 40%, 60%);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .streak-badge {
+    animation: none;
+  }
+  
+  .confetti-animation {
+    animation: none;
+  }
+  
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
