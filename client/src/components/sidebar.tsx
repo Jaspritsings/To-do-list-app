@@ -103,9 +103,9 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
         <nav className="p-4 space-y-2">
           {navigation.map((item) => (
             <Link key={item.name} href={item.href}>
-              <a 
+              <div 
                 className={cn(
-                  "flex items-center space-x-3 px-4 py-3 rounded-lg font-medium transition-colors",
+                  "flex items-center space-x-3 px-4 py-3 rounded-lg font-medium transition-colors cursor-pointer",
                   item.active 
                     ? "bg-primary text-primary-foreground" 
                     : "text-foreground hover:bg-secondary"
@@ -123,7 +123,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
                     {item.count}
                   </Badge>
                 )}
-              </a>
+              </div>
             </Link>
           ))}
         </nav>
@@ -145,15 +145,17 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
           </Button>
           
           <Link href="/settings">
-            <Button
-              variant="ghost"
-              className="w-full justify-start"
-              data-testid="button-settings"
-              onClick={() => onClose()}
-            >
-              <Cog6ToothIcon className="w-5 h-5 mr-3" />
-              <span>Settings</span>
-            </Button>
+            <div>
+              <Button
+                variant="ghost"
+                className="w-full justify-start"
+                data-testid="button-settings"
+                onClick={() => onClose()}
+              >
+                <Cog6ToothIcon className="w-5 h-5 mr-3" />
+                <span>Settings</span>
+              </Button>
+            </div>
           </Link>
         </div>
       </aside>
