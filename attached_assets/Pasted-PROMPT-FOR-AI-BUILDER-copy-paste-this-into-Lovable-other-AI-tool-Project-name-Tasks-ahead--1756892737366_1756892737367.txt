@@ -1,0 +1,470 @@
+PROMPT FOR AI BUILDER (copy-paste this into Lovable / other AI tool)
+
+Project name: (Tasks ahead) — friendly cross-platform To-Do + Habits app
+Primary goal: Build an accessible, delightfully simple and social to-do list app that works for everyone (age 5 → 65+): students, parents, frontline workers, professors, creatives and professionals. Must be intuitive enough for a child, configurable and powerful enough for power users.
+
+
+---
+
+High level requirements (MUST)
+
+1. Cross-platform: Android, iOS, macOS, Windows, and Web (responsive).
+
+
+2. Offline-first: create/edit tasks offline; reliable two-way sync when online. Use robust conflict resolution (CRDT preferred or deterministic merge strategy).
+
+
+3. Accessibility & usability: WCAG 2.1 AA level compliance; support TalkBack/VoiceOver; “Simple Mode” with large taps and minimal options; support for low-bandwidth & SMS fallback capture.
+
+
+4. Localization & languages: multi-language support (l10n + i18n). Default initial languages: English (US/UK), Hindi, Spanish, Mandarin, Arabic, French, German, Portuguese, Russian, Bengali. Support right-to-left. Allow user to change app language anytime.
+
+
+5. Voice support: full voice input (speech-to-text) for adding tasks and voice navigation commands (e.g., “Add task buy milk tomorrow 9 AM”), and voice notes (audio attachments). Provide TTS to read tasks aloud. Allow offline STT/TTS fallbacks where possible.
+
+
+6. Media attachments: tasks support text, images (photos), audio voice notes, and short videos (configurable default max e.g., 30–60 seconds). Provide thumbnailing, compression, and EXIF strip for privacy.
+
+
+7. Font & display customization: allow user to change font family (select from a curated set) and font size (range e.g., 12–30sp). Provide sensible default (system UI font, 16sp).
+
+
+8. Themes: Light, Dark, and Warm theme; system theme sync option and manual override.
+
+
+9. Push & in-app notifications: distinct handling for pending vs overdue tasks. In-app overdue items must clearly show red highlight/badge. System push notifications should include “OVERDUE” in the title for overdue items (note: system notification color control is limited; do not rely on color). Allow custom reminder tones.
+
+
+10. Priorities: tasks must support priority levels: High / Medium / Low; UI supports quick priority assignment and filters by priority.
+
+
+11. Streaks & gamification: implement streaks and titles exactly as below (with badges/animations and shareable achievement cards):
+
+Day 1 → Trailblazer 🚀
+
+Day 4 → Consistent 📍
+
+Day 7 (1 week) → Warrior of the Week ⚔
+
+Day 14 (2 weeks) → Momentum Builder 🔥
+
+Day 21 (3 weeks) → Unstoppable ⚡
+
+Day 28 (1 month) → Elite 🏆
+
+2 Months (60 days) → Momentum Master 🎯
+
+4 Months (120 days) → Champion 🥇
+
+6 Months (180 days) → The Iron Mind 🛡
+
+1 Year (365 days) → The Invincible 👑
+Include logic: how streaks are counted (contiguous daily completion of at least one qualifying task), timezone handling, pause option for extenuating circumstances, and share-to-social.
+
+
+
+12. Social & sharing: allow shared lists (family/teams), template sharing, public community templates gallery (opt-in). Light social features: follow friends (optional), share achievements, share templates. Privacy by default.
+
+
+13. Simple onboarding & discoverability: 3-step onboarding with an optional interactive tour. “Simple Mode” toggle during onboarding.
+
+
+14. Security & privacy: encryption in transit (TLS) and at rest; provide option for end-to-end encryption for private lists. GDPR/CCPA compliance, account export and delete.
+
+
+15. Admin and moderation: admin dashboard for analytics, content moderation (community templates), user support, and push campaigns.
+
+
+16. Deliverables: Figma designs, clickable prototype, native builds (Android APK/Play Store package, iOS TestFlight build, macOS/Windows installers or Microsoft Store/Mac App Store packages or web PWA), backend code repo, API docs (OpenAPI), test suite (unit + e2e), localization files, and logo assets (SVG + PNG set).
+
+
+
+
+---
+
+MVP feature list (PRIORITY: MUST HAVE)
+
+Capture & Input
+
+Natural-language parsing for dates/recurrence/priority/tags (e.g., “Do laundry every 2nd Sat at 9am”).
+
+Quick add omni-inbox: notification shade widget, share sheet, clipboard capture, email-to-task address, chat capture (WhatsApp/Telegram bot optional).
+
+Voice quick add (STT) and voice note attachment. Offline capture stored locally and synced later.
+
+
+Views & Planning
+
+Inbox / My Day (smart suggestions) / Upcoming / Calendar / List view.
+
+Board/Kanban view for projects.
+
+Focus mode (single task + Pomodoro timer).
+
+
+Organization
+
+Projects/Areas, Sections/Headings, Subtasks (checklists), Tags/Labels, Priority flag.
+
+Saved filters and search.
+
+Templates: create/save/restore list templates.
+
+
+Reminders & Scheduling
+
+Time, date, recurring, and location-based reminders (geofence/travel-time aware).
+
+Snooze & quick reschedule. Snooze reason optional.
+
+Soft vs hard deadlines & escalation after X snoozes.
+
+
+Notifications
+
+Pending vs overdue separation. In-app overdue shows red badge and red list item. Push notifications include explicit “OVERDUE” for overdue tasks. Configurable sounds and quiet hours.
+
+
+Media & Attachments
+
+Attach photo/image, record voice note, attach short video (30–60s default). Manage storage & compression.
+
+
+Streaks & Rewards
+
+Implement streak logic, UI badges, confetti on milestone; ability to share milestone images.
+
+
+Accessibility
+
+Simple Mode, large controls, screen reader labels, color contrast checks.
+
+
+Cross-platform
+
+Native behavior via cross-platform framework (Flutter / React Native recommended) or platform-native for best UX. Web PWA fallback.
+
+
+
+---
+
+V2+ (PRIORITY: NICE TO HAVE / CAN/PHASE 2)
+
+Auto-timeboxing: propose calendar blocks for tasks based on duration and calendar free slots.
+
+Task dependencies (lite) & auto-reschedule dependent tasks.
+
+Ambient capture: photo → OCR → task creation.
+
+Assistive summaries: auto one-line summary of long task notes.
+
+Community template gallery with ratings & categories.
+
+Points, leaderboards (opt-in), chore allowance rotation for families.
+
+Advanced analytics: completion trends, on-time rate, streak heatmap, scope-creep alerts.
+
+On-device ML: smart suggestions tailored to user habit patterns.
+
+Local end-to-end encryption option for private lists.
+
+
+
+---
+
+UI/UX specifics (MUST)
+
+Large floating “Add” button on mobile; keyboard shortcut for desktop.
+
+One-obvious-action per primary screen: capture → plan → do.
+
+Progressive disclosure: reveal advanced features only when needed. Default view: Inbox + My Day.
+
+Clear affordances for children & elders: iconography + short text labels, tooltips, and voice hints.
+
+In-app overdue to always use red accent + high contrast and show overdue count on home screen.
+
+Default font: system UI font, default size 16sp. Provide settings to change font family (curated list) and size (12–30). Preserve user choice across devices.
+
+
+
+---
+
+Voice & Language details (MUST)
+
+STT: support all enabled languages; prioritize native SDKs (Apple Speech, Android Speech) and cloud fallback (Google/Azure) for accuracy.
+
+Intent parsing: allow natural commands (“Complete last task”, “Show my overdue items”, “Start focus for 25 minutes”).
+
+TTS: read tasks/backlog summaries.
+
+Voice navigation: mapping of commands to key flows; handle confirmations for destructive actions.
+
+Offline voice capture: record audio when offline and transcribe when back online. Provide raw audio as attachment.
+
+Accessibility: all voice features must have text equivalents.
+
+
+
+---
+
+Notifications & Reminder tones (MUST)
+
+Provide a list of built-in reminder tones: Single Beep, Chime, Whistle, Bell, Gentle Bird, Drum Tap, Notification Ping, Soft Chime.
+
+Allow custom tone upload.
+
+Notification payloads for pending vs overdue must include clear text and labels; in-app overdue visuals use red highlight and red notification banners.
+
+Respect Do Not Disturb and quiet hours; allow “urgent-only” override settings.
+
+
+Note for implementers: system notifications cannot reliably change OS notification accent color — present clear text "OVERDUE" in the title and use in-app red visuals.
+
+
+---
+
+Attachments & media (MUST)
+
+Supported formats: images (jpg, png, webp), audio (mp3, m4a, wav), video (mp4) — short clips only (default 30–60s).
+
+Server side: generate thumbnails, transcode videos if needed, strip EXIF, and optional virus scan. Allow users to delete attachments. Apply storage quotas with plan upgrade options.
+
+
+
+---
+
+Streak & Gamification rules (MUST — exact logic to implement)
+
+Streak increments when the user completes at least one qualifying task between 00:00 and 23:59 local device time (timezone aware).
+
+A “qualifying task” defined in settings (default: any task marked “complete” not undone within 24 hrs).
+
+Show current streak, days remaining to next milestone, and next badge preview.
+
+Badge unlock animation, confetti, and shareable image (PNG).
+
+Allow user to “pause” streak for up to X days (configurable) with reason (sickness, travel). Pauses must be explicit and require confirmation.
+
+Provide stats for streaks in profile (“Longest streak”, “Total streaks earned”).
+
+Allow reset only after confirm dialog; provide export of achievements.
+
+
+
+---
+
+Social & sharing (MUST: privacy first)
+
+Shared lists with per-member assignment & notifications.
+
+Template/achievement sharing via link (public or private).
+
+Optional friend follow & public profile (opt-in).
+
+Community templates gallery moderated; allow downloads & cloning.
+
+
+
+---
+
+Integrations (MUST / HIGH PRIORITY)
+
+Calendar: Google Calendar, Apple Calendar, Outlook (two-way visibility optional).
+
+Email: add task from Gmail/Outlook; tasks link back to email source.
+
+Cloud storage: link documents from Drive/OneDrive/Dropbox/Notion (deep links).
+
+Messaging bots (optional): add tasks via WhatsApp/Telegram bot.
+
+Use FCM (Android/Web) and APNs (iOS/macOS) for push.
+
+
+
+---
+
+Data, security & compliance (MUST)
+
+TLS 1.2+ in transit; AES-256 at rest.
+
+Optional E2EE for private lists.
+
+GDPR/CCPA compliance: user data export and complete deletion.
+
+Audit logs for admin (no access to E2EE lists).
+
+Anonymized analytics only (opt-in).
+
+
+
+---
+
+Admin & analytics (MUST for launch)
+
+Admin dashboard: user metrics, active users, DAU/MAU, churn, common errors, community templates moderation.
+
+Tools to send targeted in-app messages and account support.
+
+Support logs with attachments for debugging.
+
+
+
+---
+
+Logo & brand brief (Include in deliverables)
+
+Goal: Friendly, memorable, and universal; scalable for app icon and marketing.
+Tone: Warm, simple, energetic, inclusive.
+Concepts to explore (pick 2–3):
+
+A modern rounded checkmark inside a soft speech-bubble / shield — communicates “task done & trusted”.
+
+A playful tick inside a starburst or sunrise to imply streaks and daily wins.
+
+A simple calendar tile with a smiling check mark.
+Color palette suggestions: teal/blue + warm accent (orange/coral), plus neutral dark/white for contrast. Provide one monochrome variant.
+Deliverables: SVG (vector), PNGs (512×512, 192×192, 120×120), favicon, and monochrome assets. Provide app icon on iOS/Android launch sizes. Provide logo usage guidelines, clear space, and typeface suggestions. Provide 3 initial concepts and a final selected concept with minor variations (flat / with shadow / monochrome).
+
+
+
+---
+
+Analytics & success metrics (MUST define)
+
+DAU, MAU, retention (1d/7d/30d), average tasks completed/day, average session length, streak restart rate, feature usage (voice, attachments), crash rate, and onboarding completion rate. Analytics must be anonymized and opt-in.
+
+
+
+---
+
+Technical suggestions (recommended, not mandatory)
+
+Cross-platform: Flutter or React Native for fast cross-platform UIs. Native modules for STT/TTS and local notifications.
+
+Backend: Node.js or Go; PostgreSQL for relational data; Redis for caching; S3 for attachments.
+
+Auth: OAuth2 (Google, Apple Sign-in) + email/password. Support anonymous usage with upgrade.
+
+CI/CD: GitHub Actions / Fastlane deployment to Play Store and App Store (TestFlight).
+
+Push: FCM + APNs. Use web push for PWA.
+
+
+
+---
+
+APIs & data model (basic)
+
+Provide OpenAPI (Swagger) spec for: Auth (login/signup), Tasks (CRUD), Projects, Attachments, Reminders, Sharing, Notifications, Streaks, Templates, Users, Admin endpoints.
+
+Webhooks for task updates and share events.
+
+
+
+---
+
+QA & tests (MUST)
+
+Unit tests for business logic; integration tests for sync logic; e2e tests for core flows (create task, complete task, offline create → sync, share list).
+
+Accessibility tests for screen reader navigation and contrast.
+
+Localization tests for selected languages.
+
+Load tests for backend (attachments and push).
+
+
+
+---
+
+Deliverables (MUST be supplied)
+
+1. Figma design files (desktop & mobile screens) + clickable prototype for core flows: onboarding, capture, My Day, task detail, shared list, settings, streaks.
+
+
+2. Logo package (SVG + PNG variants + usage doc).
+
+
+3. Working builds: Android APK / iOS TestFlight build / macOS & Windows builds or instructions to build / Web PWA.
+
+
+4. Backend source code with README, Docker compose, and deployment instructions.
+
+
+5. OpenAPI docs and Postman collection.
+
+
+6. Automated test suite & test results.
+
+
+7. Localization resources (i18n JSON/YAML for chosen languages).
+
+
+8. Admin dashboard and analytics setup.
+
+
+9. Short technical document describing offline sync strategy and conflict resolution.
+
+
+
+
+---
+
+Acceptance criteria (for each major feature)
+
+Capture: can add a task via text, voice, photo, or email → appears in Inbox immediately (offline case: saved locally and synced when online).
+
+Reminders: time & location reminders trigger on target device and create distinct overdue state with in-app red alert.
+
+Streaks: correct badge unlocked at specified days, shareable card generated.
+
+Accessibility: screen reader reads all actionable items; large text mode works; contrast checker passes.
+
+Localization: switching app language immediately replaces UI strings; date/time formats follow locale.
+
+Voice: STT accepts natural commands and creates correctly parsed tasks for the majority of typical sentences (edge cases documented).
+
+Security: data encrypted in transit; user can export & delete account data.
+
+
+
+---
+
+Example user stories (for devs & testers)
+
+As a busy parent, I want to take a photo of a school notice and convert it to a homework task so I don’t forget.
+
+As a student, I want to add tasks by voice while biking, so I don’t need to type.
+
+As an elder user, I want Simple Mode with large buttons and fewer distractions so I can use the app comfortably.
+
+As a family, we want a shared grocery list that all members can edit and get notified when an item is added.
+
+As a power user, I want saved filters like “@lab & priority:high & due:7d” and a My Day smart suggestion list.
+
+
+
+---
+
+Implementation notes & constraints
+
+Respect OS restrictions (notification color control is limited) — use wording and in-app red highlight for overdue.
+
+Short video attachment limits should be enforced and communicated before upload.
+
+Provide clear privacy defaults (sharing OFF, analytics OFF).
+
+Include user settings to opt in/out of gamification and social features.
+
+
+
+---
+
+Tone / brand voice for UI copy
+
+Warm, encouraging, concise. Example microcopy:
+
+Onboarding: “Welcome! Let’s make your day simple — start by adding one task.”
+
+Task completion celebration: “Nice! You finished a task — +10 XP. Keep it up!” (Configurable tone: playful / professional / neutral).
